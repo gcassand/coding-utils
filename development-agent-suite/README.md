@@ -30,7 +30,7 @@ The installer uses [installer-manifest.json](installer-manifest.json) as an expl
 
 1. Read the [role catalog](ROLE-CATALOG.md) and choose a [workflow](WORKFLOWS.md).
 2. Follow the platform guide: [Codex](SETUP-CODEX.md) or [Claude Code](SETUP-CLAUDE-CODE.md).
-3. Use the copy-pasteable [usage examples](USAGE-EXAMPLES.md).
+3. Use the copy-pasteable [usage examples](USAGE-EXAMPLES.md), or follow the [new-project walkthrough](EXAMPLE-NEW-PROJECT.md) end to end.
 4. Read the [security model](SECURITY.md) before granting network, secret, deployment, or production access.
 5. Validate a source-suite edit with `python3 development-agent-suite/tools/validate_agent_suite.py`.
 
