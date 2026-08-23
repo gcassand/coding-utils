@@ -5,6 +5,7 @@
 - Repackaged all installable adapters and tools inside `development-agent-suite/`.
 - Added a manifest-driven, non-destructive installer for Codex, Claude Code, or both.
 - Added installation, direct-role, workflow, worktree, and handoff examples.
+- Added a greenfield new-project walkthrough covering workflow order, decision gates, and the acceptance-oracle phase.
 
 ## 0.1.0 - 2026-08-23
 

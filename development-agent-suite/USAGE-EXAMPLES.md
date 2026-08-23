@@ -2,6 +2,8 @@
 
 Use one capable agent for small or tightly coupled work. Delegate only when each task has a stable boundary, separate write ownership, and an independent acceptance check.
 
+These are single invocations. For a full sequence from gathered research to a running acceptance oracle, see the [new-project walkthrough](EXAMPLE-NEW-PROJECT.md).
+
 ## Direct specialists
 
 ```text
