@@ -1,0 +1,19 @@
+{
+  "id": "medium-feature-two-slices",
+  "workflow": "implement-feature",
+  "prompt": "Implement an approved feature with a frozen HTTP contract, one backend slice, and one independent client slice.",
+  "context": "The API schema, consumer contract tests, disjoint write sets, base commit, and integration owner are explicit.",
+  "expected_orchestration": "Allow two isolated writers because the contract is frozen and write sets are disjoint. Integrate centrally and run consumer, backend, and end-to-end checks.",
+  "acceptance_checks": [
+    "Each writer receives a complete task packet and separate worktree.",
+    "Neither writer edits the shared contract.",
+    "Per-slice checks pass before integration.",
+    "Combined contract and acceptance tests pass in the integration worktree."
+  ],
+  "failure_signals": [
+    "A writer silently changes the shared contract.",
+    "Workers use a shared writable checkout.",
+    "A clean merge is treated as sufficient validation."
+  ]
+}
+

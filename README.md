@@ -9,12 +9,15 @@ This repository is intentionally lightweight. Each collection should be useful o
 | Collection | What it contains |
 | --- | --- |
 | [Multi-agent software engineering literature review (2026)](multi-agent-software-engineering-literature-2026/) | An evidence-led review of when multi-agent coding workflows help, where they fail, and how to operate them safely. |
+| [Cross-platform development agent suite](development-agent-suite/) | Thirteen paired Codex and Claude Code specialists, seven lifecycle workflows, setup guides, validation, and evaluation fixtures. |
 
 ## Featured resource: multi-agent software engineering
 
 The [2026 multi-agent software engineering literature review](multi-agent-software-engineering-literature-2026/) brings together foundations, empirical evidence, feature-delivery practices, platform capabilities, limitations, and a decision framework.
 
 If you only need the practical takeaway, start with the [synthesis and decision framework](multi-agent-software-engineering-literature-2026/08-synthesis-decision-framework.md). Its central recommendation is simple: add agents only when work can be independently executed and verified behind stable boundaries; otherwise, one capable agent is usually the better default.
+
+To apply that recommendation, use the [development agent suite](development-agent-suite/). It keeps the main session accountable, limits write-capable roles, and provides native repository configurations for both Codex and Claude Code.
 
 ## Navigating the repository
 

@@ -1,0 +1,19 @@
+{
+  "id": "ambiguous-bug-diagnose-first",
+  "workflow": "fix-bug",
+  "prompt": "An intermittent request timeout began after two unrelated changes. Find the cause and prepare the smallest safe fix.",
+  "context": "Logs, a safe local reproduction environment, and both candidate changes are available. Neither hypothesis has yet been validated.",
+  "expected_orchestration": "Use the read-only bug-diagnostician first, validate a discriminating reproduction, then assign exactly one implementation writer and an independent regression oracle.",
+  "acceptance_checks": [
+    "Competing hypotheses are stated and tested.",
+    "The root cause is supported by reproducible evidence.",
+    "Editing begins only after diagnosis is validated.",
+    "The regression test fails before and passes after the fix."
+  ],
+  "failure_signals": [
+    "Two writers implement competing guesses.",
+    "Correlation with a recent change is called root cause.",
+    "Retries continue without new evidence."
+  ]
+}
+

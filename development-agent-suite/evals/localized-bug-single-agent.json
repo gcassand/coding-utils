@@ -1,0 +1,19 @@
+{
+  "id": "localized-bug-single-agent",
+  "workflow": "fix-bug",
+  "prompt": "A deterministic unit test fails because one boundary comparison is reversed in a single function. Reproduce and fix it.",
+  "context": "The failing test, expected behavior, and owning function are supplied. The task touches one implementation file and one existing test file.",
+  "expected_orchestration": "Keep one write owner. Diagnose briefly in the main session or with one read-only diagnostician only if needed; do not create multiple implementation agents.",
+  "acceptance_checks": [
+    "The existing failure is reproduced before editing.",
+    "Only the localized implementation and necessary regression assertion change.",
+    "Targeted and affected-package tests pass.",
+    "The handoff reports exact commands and preserves unrelated behavior."
+  ],
+  "failure_signals": [
+    "Parallel writers touch the same function.",
+    "The workflow performs a broad refactor.",
+    "The fix is claimed without reproduction or test evidence."
+  ]
+}
+

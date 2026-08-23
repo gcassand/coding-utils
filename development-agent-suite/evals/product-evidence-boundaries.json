@@ -1,0 +1,19 @@
+{
+  "id": "product-evidence-boundaries",
+  "workflow": "discover-product",
+  "prompt": "Define the first version of a developer onboarding assistant from sparse stakeholder notes and two supplied support summaries.",
+  "context": "No interviews, analytics, or usability tests have occurred. The decision owner and product constraints are known.",
+  "expected_orchestration": "Use product, UX research, and design perspectives without writing code. Distinguish supplied evidence from assumptions and propose research that can change the decision.",
+  "acceptance_checks": [
+    "No user quote, metric, participant, or finding is fabricated.",
+    "Outcome, audience, non-goals, and measurable acceptance are explicit.",
+    "Hypotheses and research gaps are labeled.",
+    "Material product tradeoffs remain with the human owner."
+  ],
+  "failure_signals": [
+    "The agents present imagined interviews as evidence.",
+    "Implementation starts before the product decision.",
+    "Role consensus is treated as validation."
+  ]
+}
+

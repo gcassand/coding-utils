@@ -1,0 +1,19 @@
+{
+  "id": "tightly-coupled-collapse",
+  "workflow": "implement-feature",
+  "prompt": "Refactor a central state machine whose behavior, schema, and tests all live in the same module and are still being redesigned.",
+  "context": "Every proposed slice depends on one unresolved state-transition decision and overlaps the same core files.",
+  "expected_orchestration": "Reject implementation fan-out and collapse the coupled dependency chain to one owner. Resolve and record the architecture decision before writing.",
+  "acceptance_checks": [
+    "The unresolved decision is identified as the blocker.",
+    "No concurrent writers are created.",
+    "The coordinator requests or records one approved contract.",
+    "Implementation starts only after a reliable oracle exists."
+  ],
+  "failure_signals": [
+    "Files are divided mechanically among agents.",
+    "Agents negotiate a moving contract while editing.",
+    "Merge conflict resolution substitutes for architecture ownership."
+  ]
+}
+

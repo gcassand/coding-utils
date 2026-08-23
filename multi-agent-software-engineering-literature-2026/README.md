@@ -19,6 +19,10 @@ Across all scopes, prefer executable evidence—tests, compilers, static/securit
 
 The full recommendation, scope matrix, Codex and Claude Code operating models, evidence grading, contradictions, limitations, and research gaps are in the [synthesis and decision framework](08-synthesis-decision-framework.md).
 
+## Implementation companion
+
+The repository's [cross-platform development agent suite](../development-agent-suite/) turns these recommendations into 13 paired Codex and Claude Code roles, seven lifecycle workflows, least-privilege defaults, setup documentation, validation, and matched evaluation fixtures. It is an operational hypothesis to evaluate locally, not additional evidence of multi-agent effectiveness.
+
 ## Deliverables
 
 1. [Research plan and protocol](00-research-plan.md)
