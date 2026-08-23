@@ -1,46 +1,34 @@
 # Codex setup
 
-The checked-in configuration is active when Codex starts from this repository. Codex reads `AGENTS.md`, project custom agents under `.codex/agents/`, project configuration from `.codex/config.toml`, and repository skills under `.agents/skills/`.
+Install the Codex adapter into the target repository:
 
-## Adopt the suite in another repository
-
-Copy these paths while preserving their relative locations:
-
-```text
-AGENTS.md
-.codex/config.toml
-.codex/agents/
-.agents/skills/
-development-agent-suite/
-scripts/validate_agent_suite.py
+```sh
+python3 /path/to/coding-utils/development-agent-suite/tools/install_agent_suite.py \
+  --platform codex --target /path/to/target-repository
 ```
 
-Do not overwrite an existing `AGENTS.md` or `.codex/config.toml`. Merge durable repository conventions into `AGENTS.md`, and merge the `[agents]` table into the existing project config. Existing, more-specific nested `AGENTS.md` files continue to apply within their subtrees.
+It creates `AGENTS.md`, `.codex/config.toml`, `.codex/agents/`, and `.agents/skills/`. It does not overwrite an existing file: inspect the reported target and template paths, merge deliberately, then rerun. Use `--dry-run` first when adopting an existing repository.
 
-Start a new Codex session after copying or changing project instructions. Run the validator before use.
+Restart Codex after installing or changing discovery files. The target repository then exposes the custom agents and workflow skills.
 
 ## Use
 
-- Ask directly for a role: `Use the bug-diagnostician to reproduce issue 123 without editing files.`
-- Invoke a workflow skill by name: `$fix-bug reproduce and fix issue 123.`
-- Ask for parallel work only when the work packets are independent: `Use codebase-explorer and security-specialist in parallel, wait for both, then synthesize their evidence.`
-- In the CLI, use `/agent` or `/subagents` to inspect spawned threads.
+- Direct a bounded specialist: `Use the bug-diagnostician to reproduce issue 123 without editing files.`
+- Invoke a workflow: `$fix-bug reproduce and fix issue 123.`
+- Delegate independent research: `Use codebase-explorer and security-specialist in parallel, then synthesize their evidence.`
+- Inspect active subagents in the CLI with `/agent` or `/subagents`.
 
-Subagents inherit the parent turn's live sandbox and approval choices. The custom files narrow defaults, but they do not grant new authority. For concurrent write-heavy work, prefer separate Codex chats/worktrees with one writer per worktree rather than multiple writers in one shared checkout.
-
-## Project defaults
-
-`.codex/config.toml` enables subagents and caps open spawned threads at four. It does not broaden the parent sandbox, configure credentials, or enable external services. Model and reasoning settings are pinned per role so they can be reviewed independently.
+The target `AGENTS.md` is the coordination contract. Subagents inherit the parent session’s sandbox and approvals; the adapter narrows defaults but grants no new authority. For concurrent writing, use separate Codex chats/worktrees with one writer per worktree.
 
 ## Verify and troubleshoot
 
 ```sh
-python3 scripts/validate_agent_suite.py
+python3 /path/to/coding-utils/development-agent-suite/tools/validate_agent_suite.py
 codex --version
 codex features list
 ```
 
-If a role is missing, confirm the file is a readable TOML file under `.codex/agents/` and contains `name`, `description`, and `developer_instructions`. If a skill is missing, confirm it is under `.agents/skills/<name>/SKILL.md` with matching `name` and `description` frontmatter. Restart the session after changing discovery files.
+The validator checks the packaged source suite, not a manually merged target repository. If an installed role is missing, check `.codex/agents/<role>.toml`; if a workflow is missing, check `.agents/skills/<workflow>/SKILL.md`. Restart the session after discovery-file changes. See [usage examples](USAGE-EXAMPLES.md) for task packets and handoffs.
 
 Official references: [AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [skills](https://learn.chatgpt.com/docs/build-skills), and [configuration](https://learn.chatgpt.com/docs/config-file/config-basic).
 

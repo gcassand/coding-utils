@@ -2,34 +2,49 @@
 
 Version **0.1.0**, with documentation checked through **23 August 2026 (Europe/Paris)**.
 
-This directory is the implementation companion to the repository's [multi-agent software-engineering literature review](../multi-agent-software-engineering-literature-2026/). It provides the same 13 lifecycle specialists and seven workflows for Codex and Claude Code while preserving each tool's native configuration format.
+This is a distributable, stack-agnostic set of 13 lifecycle specialists and seven workflows for Codex and Claude Code. Its source templates remain inside this directory; use the installer to add only the platform you choose to a target repository.
 
-## Design in one minute
+## Install
 
-- The main session is the coordinator, decision owner, and integrator.
-- One agent is the default. Multiple agents are used only for independent, independently verifiable work.
-- Research and review roles are read-only. Implementation, test, and documentation roles may write only inside an assigned slice and isolated worktree.
-- Agents return evidence and executable results, not confidence or consensus.
-- Codex and Claude adapters are hand-maintained twins checked by an offline validator.
+Run the installer from a checkout of this repository. The target must already exist.
+
+```sh
+# Install Codex into the current repository
+python3 development-agent-suite/tools/install_agent_suite.py --platform codex
+
+# Install Claude Code into another repository
+python3 development-agent-suite/tools/install_agent_suite.py \
+  --platform claude --target /path/to/project
+
+# Install both adapters
+python3 development-agent-suite/tools/install_agent_suite.py \
+  --platform both --target /path/to/project
+
+# Prompt for the platform, without copying files
+python3 development-agent-suite/tools/install_agent_suite.py --dry-run
+```
+
+The installer uses [installer-manifest.json](installer-manifest.json) as an explicit allowlist. It creates only missing files, recognizes byte-identical files as unchanged, and makes no changes at all if any destination conflicts. Merge conflicts manually, then rerun it. It never installs credentials, deployment settings, or a permission bypass.
 
 ## Start here
 
-1. Review the [role catalog](ROLE-CATALOG.md).
-2. Choose a [workflow](WORKFLOWS.md) rather than assembling a team by job title alone.
-3. Follow [Codex setup](SETUP-CODEX.md) or [Claude Code setup](SETUP-CLAUDE-CODE.md).
+1. Read the [role catalog](ROLE-CATALOG.md) and choose a [workflow](WORKFLOWS.md).
+2. Follow the platform guide: [Codex](SETUP-CODEX.md) or [Claude Code](SETUP-CLAUDE-CODE.md).
+3. Use the copy-pasteable [usage examples](USAGE-EXAMPLES.md).
 4. Read the [security model](SECURITY.md) before granting network, secret, deployment, or production access.
-5. Run `python3 scripts/validate_agent_suite.py` after any change.
+5. Validate a source-suite edit with `python3 development-agent-suite/tools/validate_agent_suite.py`.
 
-For iteration practices, see [authoring](AUTHORING.md) and [evaluation](EVALUATION.md). Release history is recorded in [CHANGELOG.md](CHANGELOG.md).
+For iteration practices, see [authoring](AUTHORING.md) and [evaluation](EVALUATION.md). Release history is in [CHANGELOG.md](CHANGELOG.md).
 
-## Configuration map
+## Packaged layout
 
-| Surface | Codex | Claude Code |
-| --- | --- | --- |
-| Repository instructions | `AGENTS.md` | `CLAUDE.md` importing `AGENTS.md` |
-| Agent definitions | `.codex/agents/*.toml` | `.claude/agents/*.md` |
-| Workflow skills | `.agents/skills/*/SKILL.md` | `.claude/skills/*/SKILL.md` |
-| Project defaults | `.codex/config.toml` | No committed settings override |
+| Content | Location |
+| --- | --- |
+| Shared Codex instructions | `templates/shared/AGENTS.md` |
+| Codex adapters and workflows | `templates/codex/` |
+| Claude Code adapters and workflows | `templates/claude/` |
+| Safe installation and validation | `tools/` |
+| Regression tests | `tests/` |
 
 Official references: [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Codex skills](https://learn.chatgpt.com/docs/build-skills), [Claude Code subagents](https://code.claude.com/docs/en/sub-agents), [Claude Code skills](https://code.claude.com/docs/en/slash-commands), and [Claude Code project memory](https://code.claude.com/docs/en/memory).
 

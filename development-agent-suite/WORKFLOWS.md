@@ -1,6 +1,6 @@
 # Lifecycle workflows
 
-The paired skills under `.agents/skills/` and `.claude/skills/` expose the workflows below. Invoke them explicitly when you want the full orchestration; individual roles may also be called directly for bounded work.
+The paired source skills under `templates/codex/.agents/skills/` and `templates/claude/.claude/skills/` expose the workflows below. Install the selected adapter, then invoke them explicitly when you want the full orchestration; individual roles may also be called directly for bounded work. See [usage examples](USAGE-EXAMPLES.md).
 
 ## `discover-product`
 
@@ -38,4 +38,3 @@ Use before deployment or release. `release-engineer` owns the checklist; `test-e
 - Stop spawning when no ready queue remains.
 - Collapse overlapping or sequential work to one owner.
 - Stop retrying when repeated attempts produce no new evidence or exceed the stated budget.
-

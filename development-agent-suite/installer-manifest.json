@@ -1,0 +1,349 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "source": "templates/shared/AGENTS.md",
+      "destination": "AGENTS.md",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/config.toml",
+      "destination": ".codex/config.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/bug-diagnostician.toml",
+      "destination": ".codex/agents/bug-diagnostician.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/code-reviewer.toml",
+      "destination": ".codex/agents/code-reviewer.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/codebase-explorer.toml",
+      "destination": ".codex/agents/codebase-explorer.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/delivery-planner.toml",
+      "destination": ".codex/agents/delivery-planner.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/documentation-engineer.toml",
+      "destination": ".codex/agents/documentation-engineer.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/implementation-engineer.toml",
+      "destination": ".codex/agents/implementation-engineer.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/product-designer.toml",
+      "destination": ".codex/agents/product-designer.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/product-owner.toml",
+      "destination": ".codex/agents/product-owner.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/release-engineer.toml",
+      "destination": ".codex/agents/release-engineer.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/security-specialist.toml",
+      "destination": ".codex/agents/security-specialist.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/software-architect.toml",
+      "destination": ".codex/agents/software-architect.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/test-engineer.toml",
+      "destination": ".codex/agents/test-engineer.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.codex/agents/ux-researcher.toml",
+      "destination": ".codex/agents/ux-researcher.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.agents/skills/discover-product/SKILL.md",
+      "destination": ".agents/skills/discover-product/SKILL.md",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.agents/skills/fix-bug/SKILL.md",
+      "destination": ".agents/skills/fix-bug/SKILL.md",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.agents/skills/implement-feature/SKILL.md",
+      "destination": ".agents/skills/implement-feature/SKILL.md",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.agents/skills/plan-feature/SKILL.md",
+      "destination": ".agents/skills/plan-feature/SKILL.md",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.agents/skills/release-readiness/SKILL.md",
+      "destination": ".agents/skills/release-readiness/SKILL.md",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.agents/skills/review-change/SKILL.md",
+      "destination": ".agents/skills/review-change/SKILL.md",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.agents/skills/security-review/SKILL.md",
+      "destination": ".agents/skills/security-review/SKILL.md",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/CLAUDE.md",
+      "destination": "CLAUDE.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/bug-diagnostician.md",
+      "destination": ".claude/agents/bug-diagnostician.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/code-reviewer.md",
+      "destination": ".claude/agents/code-reviewer.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/codebase-explorer.md",
+      "destination": ".claude/agents/codebase-explorer.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/delivery-planner.md",
+      "destination": ".claude/agents/delivery-planner.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/documentation-engineer.md",
+      "destination": ".claude/agents/documentation-engineer.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/implementation-engineer.md",
+      "destination": ".claude/agents/implementation-engineer.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/product-designer.md",
+      "destination": ".claude/agents/product-designer.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/product-owner.md",
+      "destination": ".claude/agents/product-owner.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/release-engineer.md",
+      "destination": ".claude/agents/release-engineer.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/security-specialist.md",
+      "destination": ".claude/agents/security-specialist.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/software-architect.md",
+      "destination": ".claude/agents/software-architect.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/test-engineer.md",
+      "destination": ".claude/agents/test-engineer.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/agents/ux-researcher.md",
+      "destination": ".claude/agents/ux-researcher.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/skills/discover-product/SKILL.md",
+      "destination": ".claude/skills/discover-product/SKILL.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/skills/fix-bug/SKILL.md",
+      "destination": ".claude/skills/fix-bug/SKILL.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/skills/implement-feature/SKILL.md",
+      "destination": ".claude/skills/implement-feature/SKILL.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/skills/plan-feature/SKILL.md",
+      "destination": ".claude/skills/plan-feature/SKILL.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/skills/release-readiness/SKILL.md",
+      "destination": ".claude/skills/release-readiness/SKILL.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/skills/review-change/SKILL.md",
+      "destination": ".claude/skills/review-change/SKILL.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/skills/security-review/SKILL.md",
+      "destination": ".claude/skills/security-review/SKILL.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    }
+  ]
+}

@@ -7,15 +7,15 @@ Agent definitions are hypotheses. Evaluate them against a matched single-agent b
 Run:
 
 ```sh
-python3 scripts/validate_agent_suite.py
-python3 -m unittest discover -s tests
+python3 development-agent-suite/tools/validate_agent_suite.py
+python3 -m unittest discover -s development-agent-suite/tests
 ```
 
 These checks establish adapter parity and policy invariants, not behavioral quality.
 
 ## Behavioral fixtures
 
-Fixtures under `development-agent-suite/evals/` describe seven representative decisions. For each fixture, run:
+Fixtures under `evals/` describe seven representative decisions. For each fixture, run:
 
 1. One strong main agent with the same tools, model tier, repository snapshot, and attempt budget.
 2. The proposed suite workflow with the same acceptance oracle and equivalent total budget reporting.
@@ -43,4 +43,3 @@ Record total wall time, model and effort, token/cost data when available, human 
 ## Promotion rule
 
 Promote a change to an agent or workflow only when it fixes an observed failure without causing a meaningful regression on the remaining fixtures. Prefer narrow corrections over accumulating universal instructions.
-

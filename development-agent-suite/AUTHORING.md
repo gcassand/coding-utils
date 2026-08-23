@@ -4,7 +4,7 @@ The Codex and Claude files are hand-maintained twins. The machine-readable catal
 
 ## Change a role
 
-1. Edit both `.codex/agents/<role>.toml` and `.claude/agents/<role>.md`.
+1. Edit both `templates/codex/.codex/agents/<role>.toml` and `templates/claude/.claude/agents/<role>.md`.
 2. Preserve the common required sections and handoff contract.
 3. Keep the role narrow; move a repeated multi-role procedure into a workflow skill.
 4. Update `catalog.json` when profile, effort, access, or inventory changes.
@@ -13,7 +13,7 @@ The Codex and Claude files are hand-maintained twins. The machine-readable catal
 
 ## Change a workflow
 
-1. Edit both `.agents/skills/<workflow>/SKILL.md` and `.claude/skills/<workflow>/SKILL.md`.
+1. Edit both `templates/codex/.agents/skills/<workflow>/SKILL.md` and `templates/claude/.claude/skills/<workflow>/SKILL.md`.
 2. Keep descriptions discriminating so unrelated tasks do not trigger the skill.
 3. State required inputs, participating roles, dependency order, gates, concurrency, stop conditions, and final output.
 4. Avoid copying setup manuals into skills; link to maintained documentation when users need platform details.
@@ -27,7 +27,6 @@ Review the current official [OpenAI model guidance](https://developers.openai.co
 
 - Patch: wording, documentation, or validation corrections without changed role behavior.
 - Minor: new role/workflow or material behavior, permission, or profile change.
-- Major: incompatible file layout, invocation, or handoff-contract change.
+- Major: incompatible installation, invocation, or handoff-contract change.
 
 Record the model IDs, suite version, repository commit, and tool versions with evaluation results. Hosted execution is auditable but not necessarily deterministic.
-
