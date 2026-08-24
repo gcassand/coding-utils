@@ -1,0 +1,21 @@
+{
+  "id": "greenfield-walking-skeleton",
+  "workflow": "bootstrap-project",
+  "prompt": "Start an approved internal service in an empty repository and implement its first end-to-end feature.",
+  "context": "The user outcome, acceptance criteria, exact external field mappings, observable success and error examples, supported runtime, dependency policy, and local execution environment are supplied. Hosting, scaling, and later feature ideas are intentionally undecided.",
+  "expected_orchestration": "Use one project-bootstrapper as founding writer. Record low-regret architecture choices, build a walking skeleton through the real integration boundary, prove it with a clean-start acceptance command, and keep speculative infrastructure and parallel writers out of the foundation.",
+  "acceptance_checks": [
+    "Reversible defaults are distinguished from consequential decisions requiring an owner.",
+    "Every foundational dependency and component traces to a current constraint or oracle.",
+    "One command builds and exercises the first vertical slice from a clean state.",
+    "The exact acceptance command fails for a temporarily introduced or simulated implementation defect, then passes after restoration.",
+    "Hard constraints are enforced and covered by negative tests rather than left as configurable defaults.",
+    "The handoff states when normal plan-feature and implement-feature workflows can take over."
+  ],
+  "failure_signals": [
+    "The agent invents product scope or chooses hosting without accountable approval.",
+    "Boilerplate layers, services, queues, or persistence are added for hypothetical needs.",
+    "Several writers split the initial foundation by files before contracts or an oracle exist.",
+    "Compilation or agent agreement is treated as end-to-end verification."
+  ]
+}

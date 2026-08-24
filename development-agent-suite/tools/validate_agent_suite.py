@@ -87,8 +87,8 @@ def _check_unsafe_paths(errors: list[str], label: str, text: str) -> None:
 
 
 def _validate_catalog(errors: list[str], catalog: dict[str, Any]) -> None:
-    if catalog.get("version") != "0.1.0":
-        errors.append("catalog: expected initial suite version 0.1.0")
+    if catalog.get("version") != "0.2.0":
+        errors.append("catalog: expected suite version 0.2.0")
     if catalog.get("documentation_baseline") != "2026-08-24":
         errors.append("catalog: documentation baseline must be 2026-08-24")
 
@@ -99,12 +99,12 @@ def _validate_catalog(errors: list[str], catalog: dict[str, Any]) -> None:
     agent_ids = [entry.get("id") for entry in catalog.get("agents", [])]
     workflow_ids = catalog.get("workflows", [])
     fixture_ids = catalog.get("evaluation_fixtures", [])
-    if len(agent_ids) != 13 or len(set(agent_ids)) != 13:
-        errors.append("catalog: expected 13 unique agents")
-    if len(workflow_ids) != 7 or len(set(workflow_ids)) != 7:
-        errors.append("catalog: expected seven unique workflows")
-    if len(fixture_ids) != 7 or len(set(fixture_ids)) != 7:
-        errors.append("catalog: expected seven unique evaluation fixtures")
+    if len(agent_ids) != 14 or len(set(agent_ids)) != 14:
+        errors.append("catalog: expected 14 unique agents")
+    if len(workflow_ids) != 8 or len(set(workflow_ids)) != 8:
+        errors.append("catalog: expected eight unique workflows")
+    if len(fixture_ids) != 8 or len(set(fixture_ids)) != 8:
+        errors.append("catalog: expected eight unique evaluation fixtures")
 
 
 def _validate_installer_manifest(

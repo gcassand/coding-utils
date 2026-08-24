@@ -82,6 +82,14 @@
       "conflict": "manual-merge"
     },
     {
+      "source": "templates/codex/.codex/agents/project-bootstrapper.toml",
+      "destination": ".codex/agents/project-bootstrapper.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
       "source": "templates/codex/.codex/agents/release-engineer.toml",
       "destination": ".codex/agents/release-engineer.toml",
       "platforms": [
@@ -116,6 +124,14 @@
     {
       "source": "templates/codex/.codex/agents/ux-researcher.toml",
       "destination": ".codex/agents/ux-researcher.toml",
+      "platforms": [
+        "codex"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/codex/.agents/skills/bootstrap-project/SKILL.md",
+      "destination": ".agents/skills/bootstrap-project/SKILL.md",
       "platforms": [
         "codex"
       ],
@@ -250,6 +266,14 @@
       "conflict": "manual-merge"
     },
     {
+      "source": "templates/claude/.claude/agents/project-bootstrapper.md",
+      "destination": ".claude/agents/project-bootstrapper.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
       "source": "templates/claude/.claude/agents/release-engineer.md",
       "destination": ".claude/agents/release-engineer.md",
       "platforms": [
@@ -284,6 +308,14 @@
     {
       "source": "templates/claude/.claude/agents/ux-researcher.md",
       "destination": ".claude/agents/ux-researcher.md",
+      "platforms": [
+        "claude"
+      ],
+      "conflict": "manual-merge"
+    },
+    {
+      "source": "templates/claude/.claude/skills/bootstrap-project/SKILL.md",
+      "destination": ".claude/skills/bootstrap-project/SKILL.md",
       "platforms": [
         "claude"
       ],

@@ -6,6 +6,10 @@ The paired source skills under `templates/codex/.agents/skills/` and `templates/
 
 Use when the problem, audience, or experience remains uncertain. The coordinator may ask `product-owner`, `ux-researcher`, and `product-designer` for independent evidence. The output is a decision-ready product brief, not code. Research gaps stay labeled as hypotheses; no agent may invent interviews, analytics, or user feedback.
 
+## `bootstrap-project`
+
+Use after the desired outcome is approved but the repository has no meaningful codebase or acceptance harness. One `project-bootstrapper` records low-regret foundation choices, builds the first runnable vertical slice, and implements the approved seed features while architecture and implementation remain tightly coupled. Consequential product, data, security, compliance, cost, hosting, and ownership choices stay with the accountable human. Exit to `plan-feature` and `implement-feature` once another engineer can add a feature without reopening the foundation.
+
 ## `plan-feature`
 
 Use after the desired outcome is stable but before implementation. `codebase-explorer` maps the existing system; `software-architect` defines contracts and risks; `delivery-planner` creates ordered task packets. Implementation waits until the coordinator or human records the chosen design and acceptance oracle.

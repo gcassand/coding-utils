@@ -29,6 +29,13 @@ the evidence-backed root cause, and the smallest likely fix surface.
 Codex accepts the skill name with `$`; Claude Code exposes the same name as a slash command.
 
 ```text
+$bootstrap-project start the approved service described in docs/brief.md in this empty repository.
+Choose and record low-regret defaults, build one real end-to-end walking skeleton with
+a clean-start acceptance command, then implement only the approved seed features.
+Stop for consequential product, data, hosting, security, compliance, or cost decisions.
+```
+
+```text
 $discover-product help define the onboarding problem for first-time team admins.
 Separate supplied evidence, assumptions, unknowns, and research needed before design.
 ```

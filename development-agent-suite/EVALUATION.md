@@ -15,7 +15,7 @@ These checks establish adapter parity and policy invariants, not behavioral qual
 
 ## Behavioral fixtures
 
-Fixtures under `evals/` describe seven representative decisions. For each fixture, run:
+Fixtures under `evals/` describe eight representative decisions. For each fixture, run:
 
 1. One strong main agent with the same tools, model tier, repository snapshot, and attempt budget.
 2. The proposed suite workflow with the same acceptance oracle and equivalent total budget reporting.

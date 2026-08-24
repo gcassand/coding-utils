@@ -1,6 +1,6 @@
 {
   "name": "cross-platform-development-agent-suite",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "documentation_baseline": "2026-08-24",
   "profiles": {
     "frontier": {
@@ -21,6 +21,7 @@
     {"id": "ux-researcher", "profile": "balanced", "effort": "high", "access": "read-only"},
     {"id": "product-designer", "profile": "frontier", "effort": "high", "access": "read-only"},
     {"id": "software-architect", "profile": "frontier", "effort": "xhigh", "access": "read-only"},
+    {"id": "project-bootstrapper", "profile": "frontier", "effort": "xhigh", "access": "writer"},
     {"id": "delivery-planner", "profile": "balanced", "effort": "high", "access": "read-only"},
     {"id": "codebase-explorer", "profile": "fast", "effort": "medium", "access": "read-only"},
     {"id": "bug-diagnostician", "profile": "frontier", "effort": "high", "access": "read-only"},
@@ -33,6 +34,7 @@
   ],
   "workflows": [
     "discover-product",
+    "bootstrap-project",
     "plan-feature",
     "implement-feature",
     "fix-bug",
@@ -41,6 +43,7 @@
     "release-readiness"
   ],
   "evaluation_fixtures": [
+    "greenfield-walking-skeleton",
     "localized-bug-single-agent",
     "ambiguous-bug-diagnose-first",
     "medium-feature-two-slices",

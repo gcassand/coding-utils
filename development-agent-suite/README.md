@@ -1,8 +1,8 @@
 # Cross-platform development agent suite
 
-Version **0.1.0**, with documentation checked through **24 August 2026 (Europe/Paris)**.
+Version **0.2.0**, with documentation checked through **24 August 2026 (Europe/Paris)**.
 
-This is a distributable, stack-agnostic set of 13 lifecycle specialists and seven workflows for Codex and Claude Code. Its source templates remain inside this directory; use the installer to add only the platform and scope you choose.
+This is a distributable, stack-agnostic set of 14 lifecycle specialists and eight workflows for Codex and Claude Code. Its source templates remain inside this directory; use the installer to add only the platform and scope you choose.
 
 ## Install
 

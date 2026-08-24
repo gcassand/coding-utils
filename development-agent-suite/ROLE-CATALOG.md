@@ -8,6 +8,7 @@ Roles describe bounded responsibilities, not an autonomous organization chart. T
 | `ux-researcher` | Research plan or evidence synthesis with provenance | Balanced | Read-only; web only when authorized |
 | `product-designer` | Interaction specification, states, content, and accessibility notes | Frontier | Read-only |
 | `software-architect` | ADR, dependency map, contracts, migration and rollback constraints | Frontier | Read-only |
+| `project-bootstrapper` | Minimal greenfield architecture, walking skeleton, acceptance harness, and first vertical features | Frontier | Writer in assigned worktree/slice |
 | `delivery-planner` | Ordered task packets with owners, dependencies, and acceptance commands | Balanced | Read-only |
 | `codebase-explorer` | Concise execution-path and ownership map | Fast | Read-only |
 | `bug-diagnostician` | Reproduction, root-cause evidence, and falsified alternatives | Frontier | Read-only |
@@ -53,4 +54,3 @@ Every role returns these headings:
 - **Recommended next action**
 
 Downstream work must validate the handoff before consuming it. A clean merge or another agent's agreement is not validation.
-

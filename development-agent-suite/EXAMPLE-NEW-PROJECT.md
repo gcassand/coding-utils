@@ -8,7 +8,7 @@ Greenfield delivery is the least evidenced use of multiple agents. Treat this se
 
 - Evidence exists — a literature review, prior art, market or user research, integration constraints — but no running code.
 - One human remains accountable for product and architecture decisions.
-- If the outcome, non-goals, and acceptance criteria are already written down and stable, skip to [phase 3](#phase-3--define-contracts-for-the-first-slice).
+- If the outcome, non-goals, and acceptance criteria are already written down and stable, skip to [phase 3](#phase-3--bootstrap-the-architecture-in-code).
 
 ## Why a new project changes the order
 
@@ -71,49 +71,42 @@ The workflow ends by handing back open decisions. Resolve them yourself and writ
 
 This gate is not optional. Implementation task packets are only safe when the product decisions have already been removed from them.
 
-## Phase 3 — Define contracts for the first slice
+## Phase 3 — Bootstrap the architecture in code
 
-Run [`plan-feature`](WORKFLOWS.md#plan-feature) against one vertical slice that runs end to end, not the whole product.
+Run [`bootstrap-project`](WORKFLOWS.md#bootstrap-project) against one vertical slice that runs end to end, not the whole product. `project-bootstrapper` is the single founding writer: it may make and record reversible, low-regret engineering choices, while consequential commitments return to the human owner.
 
 ```text
-/plan-feature the first vertical slice: <thinnest end-to-end path>.
+/bootstrap-project start the product in this empty repository.
 
 Approved outcome and acceptance criteria: docs/brief.md.
-Integration constraints: docs/integration/.
-Repository baseline: empty repository, no code yet — skip codebase-explorer.
+Evidence and integration constraints: docs/evidence/ and docs/integration/.
+Supported environments, dependency policy, and quality priorities: <paths or facts>.
+First vertical slice: <thinnest real entry-to-output path>.
+Approved seed features: <small ordered list>.
 
-From software-architect: module boundaries, versioned API and data contracts,
-integration seams, failure and observability model, and what is deliberately
-deferred. Record it as an ADR under docs/decisions/.
+Compare only viable foundations. Choose the simplest mature option that fits the
+constraints, record the selected decision and rejected alternatives under
+docs/decisions/, then build the walking skeleton before expanding it.
 
-Then delivery-planner: ordered task packets with allowed write sets and one
-executable acceptance command per packet.
+The skeleton must exercise the real entry point and integration boundary. Provide
+one documented clean-start command, an acceptance test that rejects relevant wrong
+behavior, and build, static/type, test, and runtime smoke evidence. Implement the
+seed features sequentially as vertical slices. Do not add speculative services,
+layers, persistence, queues, caches, hosting, or deployment machinery.
+
+Stop for any consequential product, data, security, compliance, cost, hosting, or
+maintenance-ownership decision, or if the chosen contract fails against reality.
 ```
 
-`software-architect` is read-only, so this phase produces a decision record rather than a partially built framework. Scoping it to one slice keeps the contract small enough to freeze; a whole-product architecture written before anything runs will churn.
+Keeping architecture and implementation under one founding writer avoids a false handoff: before the first code runs, contracts are hypotheses and every proposed slice still converges on the same files and decisions. The bootstrapper earns abstractions through the first real path, keeps the decision record aligned with the code, and ends its ownership once another engineer can add a feature without reopening the foundation.
 
-## Phase 4 — Build the walking skeleton
+After the skeleton runs, `test-engineer`, `code-reviewer`, or `security-specialist` may produce independent evidence against explicit risk criteria. A reviewer must show which incorrect behavior or risk its oracle detects; agreement with the bootstrapper is not a gate.
 
-Run [`implement-feature`](WORKFLOWS.md#implement-feature) with a single writer. The deliverable is the acceptance oracle, not a feature.
+## Phase 4 — Transfer to normal feature delivery
 
-```text
-/implement-feature build the walking skeleton for docs/decisions/<adr>.md.
+Use [`plan-feature`](WORKFLOWS.md#plan-feature) and [`implement-feature`](WORKFLOWS.md#implement-feature) for later features only after the bootstrap handoff includes stable clean-start and acceptance commands, module and contract boundaries, dependency conventions, deferred complexity, and explicit write ownership.
 
-Goal: the thinnest end-to-end path that actually runs — real entry point, real call
-to <integration>, real response — plus one acceptance test that fails today and
-passes when the slice works, and a single command that runs it.
-
-One implementation-engineer. Do not build beyond the skeleton. Stop and report if
-the ADR contracts do not survive contact with the real integration.
-```
-
-Then have `test-engineer` harden the oracle independently: it must show which incorrect behavior the test rejects and that the test fails for the intended reason rather than environment noise.
-
-This phase is what makes every later verification possible. Reviewing generated code without an executable check produces opinions; a failing-then-passing test produces evidence.
-
-## Phase 5 — Expand under measurement
-
-Once contracts and a runnable acceptance harness exist, a second writer becomes defensible — but only where [the concurrency and stop rules](WORKFLOWS.md#concurrency-and-stop-rules) are satisfied: the task is ready, write sets are disjoint, each slice has its own oracle, and one integrator owns the merge. Add [`review-change`](WORKFLOWS.md#review-change) before integration, and [`security-review`](WORKFLOWS.md#security-review) and [`release-readiness`](WORKFLOWS.md#release-readiness) as the surface and risk warrant.
+At that point a second writer becomes defensible only where [the concurrency and stop rules](WORKFLOWS.md#concurrency-and-stop-rules) are satisfied: the task is ready, write sets are disjoint, each slice has its own oracle, and one integrator owns the merge. Add [`review-change`](WORKFLOWS.md#review-change) before integration, and [`security-review`](WORKFLOWS.md#security-review) and [`release-readiness`](WORKFLOWS.md#release-readiness) as the surface and risk warrant.
 
 Scale from measured queue and integration data, not from feature size.
 
@@ -124,9 +117,8 @@ Scale from measured queue and integration data, not from feature size.
 | 0 | none | none | Evidence committed | Material is readable by path |
 | 1 | `discover-product` | `product-owner`, `ux-researcher`, `product-designer` | No | Brief with labeled evidence and open decisions |
 | 2 | none | human decision owner | No | Decisions recorded in the brief |
-| 3 | `plan-feature` | `software-architect`, `delivery-planner` | No | ADR, versioned contracts, task packets |
-| 4 | `implement-feature` | `implementation-engineer`, `test-engineer` | Yes, one writer | End-to-end path runs; acceptance test fails before and passes after |
-| 5 | `implement-feature`, `review-change` | writers plus read-only reviewers | Yes, bounded | Ready queue empty or integration becomes the constraint |
+| 3 | `bootstrap-project` | `project-bootstrapper`; optional independent verifiers after the skeleton runs | Yes, one founding writer | Decisions recorded; clean end-to-end path and seed features pass acceptance |
+| 4 | `plan-feature`, `implement-feature`, `review-change` | bounded writers plus read-only reviewers | Yes, bounded | Normal feature work proceeds without reopening the foundation |
 
 ## Stop conditions for a new project
 
@@ -143,6 +135,6 @@ Any of these means collapse to one writer, or return to phase 2.
 
 The ordering above reflects the sibling [multi-agent software engineering literature review](../multi-agent-software-engineering-literature-2026/), specifically its [greenfield and large-feature memo](../multi-agent-software-engineering-literature-2026/04-large-features-greenfield-products.md) and [decision framework](../multi-agent-software-engineering-literature-2026/08-synthesis-decision-framework.md).
 
-Three findings drive the sequence. Dependency and contract planning should precede worker allocation. Ungrounded second-agent review did not improve implementation quality in full-lifecycle evaluation, while execution feedback did, which is why phase 4 precedes any fan-out. Project-level autonomous delivery shows low measured success rates, so this example keeps a human decision owner and one accountable integrator throughout.
+Three findings drive the sequence. Dependency and contract planning should precede worker allocation. Ungrounded second-agent review did not improve implementation quality in full-lifecycle evaluation, while execution feedback did, which is why the phase 3 walking skeleton precedes any fan-out. Project-level autonomous delivery shows low measured success rates, so this example keeps a human decision owner and one accountable integrator throughout.
 
 Evidence quality for greenfield multi-agent delivery is low. Run the [evaluation guide](EVALUATION.md) against a matched single-agent baseline before standardizing this sequence.
