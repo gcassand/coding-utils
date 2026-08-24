@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Safely install selected development-agent-suite templates into a repository."""
+"""Safely install selected development-agent-suite templates for a project or user."""
 
 from __future__ import annotations
 
@@ -14,6 +14,7 @@ from typing import Iterable
 SUITE_ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = SUITE_ROOT / "installer-manifest.json"
 PLATFORMS = ("codex", "claude", "both")
+SCOPES = ("project", "user")
 
 
 @dataclass(frozen=True)
@@ -53,7 +54,19 @@ def selected_platform(value: str | None, input_fn=input) -> str:
     return aliases[answer]
 
 
-def entries_for(platform: str) -> list[InstallEntry]:
+def _destination_for_scope(destination: Path, scope: str) -> Path:
+    if scope == "project":
+        return destination
+    if scope != "user":
+        raise ValueError(f"unsupported installation scope: {scope!r}")
+    if destination == Path("AGENTS.md"):
+        return Path(".codex/AGENTS.md")
+    if destination == Path("CLAUDE.md"):
+        return Path(".claude/CLAUDE.md")
+    return destination
+
+
+def entries_for(platform: str, scope: str = "project") -> list[InstallEntry]:
     requested = {"codex", "claude"} if platform == "both" else {platform}
     entries: list[InstallEntry] = []
     for raw in load_manifest():
@@ -72,17 +85,20 @@ def entries_for(platform: str) -> list[InstallEntry]:
         source = SUITE_ROOT / _safe_relative(source_value, "source")
         if not source.is_file():
             raise ValueError(f"manifest source does not exist: {source_value}")
-        entries.append(InstallEntry(source, _safe_relative(destination_value, "destination"), conflict))
+        destination = _safe_relative(destination_value, "destination")
+        entries.append(InstallEntry(source, _destination_for_scope(destination, scope), conflict))
     if not entries:
         raise ValueError(f"installer manifest has no files for {platform}")
     return entries
 
 
-def plan_install(target: Path, platform: str) -> tuple[list[InstallEntry], list[InstallEntry], list[InstallEntry]]:
+def plan_install(
+    target: Path, platform: str, scope: str = "project"
+) -> tuple[list[InstallEntry], list[InstallEntry], list[InstallEntry]]:
     create: list[InstallEntry] = []
     unchanged: list[InstallEntry] = []
     conflicts: list[InstallEntry] = []
-    for entry in entries_for(platform):
+    for entry in entries_for(platform, scope):
         destination = target / entry.destination
         if not destination.exists():
             create.append(entry)
@@ -100,8 +116,8 @@ def _report(kind: str, entries: Iterable[InstallEntry], target: Path) -> None:
             print(f"          Keep {target / entry.destination}; manually merge from {entry.source}")
 
 
-def install(target: Path, platform: str, dry_run: bool = False) -> int:
-    create, unchanged, conflicts = plan_install(target, platform)
+def install(target: Path, platform: str, dry_run: bool = False, scope: str = "project") -> int:
+    create, unchanged, conflicts = plan_install(target, platform, scope)
     _report("CREATE", create, target)
     _report("UNCHANGED", unchanged, target)
     _report("CONFLICT", conflicts, target)
@@ -115,14 +131,27 @@ def install(target: Path, platform: str, dry_run: bool = False) -> int:
         destination = target / entry.destination
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(entry.source, destination)
-    print(f"Installed {len(create)} file(s) for {platform}; {len(unchanged)} already matched.")
+    print(
+        f"Installed {len(create)} file(s) for {platform} at {scope} scope; "
+        f"{len(unchanged)} already matched."
+    )
     return 0
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--platform", choices=PLATFORMS, help="Install Codex, Claude Code, or both.")
-    parser.add_argument("--target", type=Path, default=Path.cwd(), help="Existing target repository (default: current directory).")
+    parser.add_argument(
+        "--scope",
+        choices=SCOPES,
+        default="project",
+        help="Installation scope (default: project).",
+    )
+    parser.add_argument(
+        "--target",
+        type=Path,
+        help="Existing installation root (default: current directory for project scope, home directory for user scope).",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Show actions without copying files.")
     return parser.parse_args(argv)
 
@@ -131,10 +160,10 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     try:
         platform = selected_platform(args.platform)
-        target = args.target.resolve()
+        target = (args.target or (Path.home() if args.scope == "user" else Path.cwd())).resolve()
         if not target.is_dir():
             raise ValueError(f"target must be an existing directory: {target}")
-        return install(target, platform, args.dry_run)
+        return install(target, platform, args.dry_run, args.scope)
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2

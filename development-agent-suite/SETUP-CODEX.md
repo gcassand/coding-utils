@@ -9,6 +9,15 @@ python3 /path/to/coding-utils/development-agent-suite/tools/install_agent_suite.
 
 It creates `AGENTS.md`, `.codex/config.toml`, `.codex/agents/`, and `.agents/skills/`. It does not overwrite an existing file: inspect the reported target and template paths, merge deliberately, then rerun. Use `--dry-run` first when adopting an existing repository.
 
+To make the adapter available to the current user in every project:
+
+```sh
+python3 /path/to/coding-utils/development-agent-suite/tools/install_agent_suite.py \
+  --platform codex --scope user
+```
+
+User scope creates `~/.codex/AGENTS.md`, `~/.codex/config.toml`, `~/.codex/agents/`, and `~/.agents/skills/`. Existing user configuration receives the same non-destructive conflict handling; merge the reported file manually and rerun. The user scope follows Codex's documented global instruction, personal agent, user skill, and user config locations.
+
 Restart Codex after installing or changing discovery files. The target repository then exposes the custom agents and workflow skills.
 
 ## Use
@@ -18,7 +27,7 @@ Restart Codex after installing or changing discovery files. The target repositor
 - Delegate independent research: `Use codebase-explorer and security-specialist in parallel, then synthesize their evidence.`
 - Inspect active subagents in the CLI with `/agent` or `/subagents`.
 
-The target `AGENTS.md` is the coordination contract. Subagents inherit the parent session’s sandbox and approvals; the adapter narrows defaults but grants no new authority. For concurrent writing, use separate Codex chats/worktrees with one writer per worktree.
+The active `AGENTS.md` is the coordination contract. Project instructions are layered after global instructions and can provide more specific rules. Subagents inherit the parent session’s sandbox and approvals; the adapter narrows defaults but grants no new authority. For concurrent writing, use separate Codex chats/worktrees with one writer per worktree.
 
 ## Verify and troubleshoot
 
@@ -31,4 +40,3 @@ codex features list
 The validator checks the packaged source suite, not a manually merged target repository. If an installed role is missing, check `.codex/agents/<role>.toml`; if a workflow is missing, check `.agents/skills/<workflow>/SKILL.md`. Restart the session after discovery-file changes. See [usage examples](USAGE-EXAMPLES.md) for task packets and handoffs.
 
 Official references: [AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [skills](https://learn.chatgpt.com/docs/build-skills), and [configuration](https://learn.chatgpt.com/docs/config-file/config-basic).
-

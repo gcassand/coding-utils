@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added `--scope user` installation for Codex and Claude Code, while keeping project scope as the default.
 - Repackaged all installable adapters and tools inside `development-agent-suite/`.
 - Added a manifest-driven, non-destructive installer for Codex, Claude Code, or both.
 - Added installation, direct-role, workflow, worktree, and handoff examples.

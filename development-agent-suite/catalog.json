@@ -1,7 +1,7 @@
 {
   "name": "cross-platform-development-agent-suite",
   "version": "0.1.0",
-  "documentation_baseline": "2026-08-23",
+  "documentation_baseline": "2026-08-24",
   "profiles": {
     "frontier": {
       "codex_model": "gpt-5.6",

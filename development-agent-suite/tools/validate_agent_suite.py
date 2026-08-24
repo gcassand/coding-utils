@@ -89,8 +89,8 @@ def _check_unsafe_paths(errors: list[str], label: str, text: str) -> None:
 def _validate_catalog(errors: list[str], catalog: dict[str, Any]) -> None:
     if catalog.get("version") != "0.1.0":
         errors.append("catalog: expected initial suite version 0.1.0")
-    if catalog.get("documentation_baseline") != "2026-08-23":
-        errors.append("catalog: documentation baseline must be 2026-08-23")
+    if catalog.get("documentation_baseline") != "2026-08-24":
+        errors.append("catalog: documentation baseline must be 2026-08-24")
 
     profiles = catalog.get("profiles", {})
     if set(profiles) != {"frontier", "balanced", "fast"}:

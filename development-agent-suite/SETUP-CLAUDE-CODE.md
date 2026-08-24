@@ -9,6 +9,15 @@ python3 /path/to/coding-utils/development-agent-suite/tools/install_agent_suite.
 
 It creates `CLAUDE.md`, `.claude/agents/`, and `.claude/skills/`. The Claude-only install is self-contained. The installer never overwrites existing files: resolve every reported conflict manually and rerun; use `--dry-run` to inspect first.
 
+To make the adapter available to the current user in every project:
+
+```sh
+python3 /path/to/coding-utils/development-agent-suite/tools/install_agent_suite.py \
+  --platform claude --scope user
+```
+
+User scope creates `~/.claude/CLAUDE.md`, `~/.claude/agents/`, and `~/.claude/skills/`. Existing user configuration receives the same non-destructive conflict handling; merge the reported file manually and rerun.
+
 After creating a repository’s first `.claude/agents/` directory, restart Claude Code. Later edits in an already-watched directory are normally detected quickly.
 
 ## Use
@@ -27,4 +36,3 @@ Agent teams are experimental and disabled by default. Enable `CLAUDE_CODE_EXPERI
 An organization model allowlist or `CLAUDE_CODE_SUBAGENT_MODEL` can substitute a model. Re-run representative evaluations after any substitution. Read-only agents exclude `Edit` and `Write`; writers use default approval handling and worktree isolation. See [usage examples](USAGE-EXAMPLES.md) for direct prompts, writer packets, and expected handoffs.
 
 Official references: [project memory](https://code.claude.com/docs/en/memory), [subagents](https://code.claude.com/docs/en/sub-agents), [skills](https://code.claude.com/docs/en/slash-commands), [worktrees](https://code.claude.com/docs/en/worktrees), and [agent teams](https://code.claude.com/docs/en/agent-teams).
-

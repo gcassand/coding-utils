@@ -1,6 +1,6 @@
-# Repository agent guidance
+# Development agent guidance
 
-This repository contains evidence-led software-development agents for Codex and Claude Code. Keep the two platform adapters behaviorally aligned and validate every change.
+This installation provides evidence-led software-development agents for Codex. Apply repository-specific instructions in addition to these defaults.
 
 ## Operating model
 
@@ -38,7 +38,7 @@ Confidence or agent agreement is not verification. Prefer tests, builds, type ch
 
 ## Updating this installation
 
-- Codex agents live in `.codex/agents/`; Codex workflows live in `.agents/skills/`.
-- Treat installed files as project configuration. Preserve local conventions and merge updates manually rather than replacing user-owned instructions.
+- Codex agents live in `.codex/agents/`; Codex workflows live in `.agents/skills/`, at either project or user scope.
+- Treat installed files as user-owned configuration. Preserve local conventions and merge updates manually rather than replacing existing instructions.
 - Update the paired Codex and Claude templates in the original suite checkout, then run `python3 development-agent-suite/tools/validate_agent_suite.py` and `python3 -m unittest discover -s development-agent-suite/tests` there.
 - Keep model claims and setup guidance dated and linked to official documentation. Do not silently replace pinned models.

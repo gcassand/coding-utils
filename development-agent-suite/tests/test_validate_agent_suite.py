@@ -101,6 +101,32 @@ class AgentSuiteValidatorTests(unittest.TestCase):
         self.assertTrue((self.target / "CLAUDE.md").is_file())
         self.assertEqual(install(self.target, "both"), 0)
 
+    def test_user_install_uses_platform_user_directories(self) -> None:
+        self.assertEqual(install(self.target, "both", scope="user"), 0)
+        self.assertTrue((self.target / ".codex/AGENTS.md").is_file())
+        self.assertTrue((self.target / ".codex/config.toml").is_file())
+        self.assertTrue((self.target / ".codex/agents/product-owner.toml").is_file())
+        self.assertTrue((self.target / ".agents/skills/fix-bug/SKILL.md").is_file())
+        self.assertTrue((self.target / ".claude/CLAUDE.md").is_file())
+        self.assertTrue((self.target / ".claude/agents/product-owner.md").is_file())
+        self.assertTrue((self.target / ".claude/skills/fix-bug/SKILL.md").is_file())
+        self.assertFalse((self.target / "AGENTS.md").exists())
+        self.assertFalse((self.target / "CLAUDE.md").exists())
+
+    def test_user_scope_cli_accepts_an_alternate_home(self) -> None:
+        self.assertEqual(
+            main(["--platform", "codex", "--scope", "user", "--target", str(self.target)]),
+            0,
+        )
+        self.assertTrue((self.target / ".codex/AGENTS.md").is_file())
+
+    def test_user_scope_conflict_blocks_every_copy(self) -> None:
+        (self.target / ".codex").mkdir()
+        (self.target / ".codex/AGENTS.md").write_text("user-owned instructions\n", encoding="utf-8")
+        self.assertEqual(install(self.target, "codex", scope="user"), 1)
+        self.assertFalse((self.target / ".codex/agents").exists())
+        self.assertFalse((self.target / ".agents").exists())
+
     def test_dry_run_does_not_mutate_target(self) -> None:
         self.assertEqual(install(self.target, "codex", dry_run=True), 0)
         self.assertEqual(list(self.target.iterdir()), [])
