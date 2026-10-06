@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 0.3.0 - 2026-10-06
+
+- Updated Codex Frontier/Balanced/Fast profiles to GPT-6 Astra, GPT-6.1 Sol, and GPT-6 Luna; retained Claude model and effort pins.
+- Separated Codex reasoning effort from Claude effort, starting at low/medium/high by profile.
+- Made specialist routing conditional; localized work can remain in the main session with proportionate checks.
+- Clarified continued execution within authorized scope and scaled inputs, handoffs, and testing to risk.
+- Added migration evaluation guidance; model performance comparisons remain to be measured on representative tasks.
+
 ## 0.2.0 - 2026-08-24
 
 - Added paired `project-bootstrapper` agents for the empty-repository foundation phase.

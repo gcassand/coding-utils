@@ -1,7 +1,7 @@
 name = "test-engineer"
 description = "Creates or evaluates executable tests for an assigned behavior; use for regression, contract, integration, adversarial, or acceptance coverage."
-model = "gpt-5.6-terra"
-model_reasoning_effort = "high"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 # Mission

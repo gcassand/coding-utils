@@ -7,19 +7,22 @@ description: Reproduce, diagnose, minimally fix, and regression-test a defect. U
 
 Use a staged diagnose–fix–verify loop. Do not assign competing writers to the same fault.
 
+Scale inputs and reporting to the decision and risk. Named roles describe responsibilities; they are optional delegation choices unless the user requests an independent specialist. Continue authorized work through verification and correction; pause only for material missing decisions or permission boundaries.
+
 ## Required inputs
 
-Collect observed and expected behavior, environment and version, reproduction information, safe diagnostic commands, relevant logs, recent changes, risk class, and allowed files.
+Establish observed and expected behavior, a reproduction or causal evidence, relevant environment constraints, and the allowed fix surface. Inspect logs, versions, recent changes, and risk details only as needed to distinguish causes. Ask only for missing information that materially blocks diagnosis or safe execution.
 
 ## Roles and order
 
-1. `bug-diagnostician` reproduces, minimizes, localizes, and falsifies alternative causes without editing.
-2. The coordinator validates the diagnosis and assigns the smallest fix surface to one `implementation-engineer`.
-3. `test-engineer` adds or validates a fail-before/pass-after regression oracle when useful and independently checkable.
-4. `code-reviewer` checks the patch; add `security-specialist` only for a security-sensitive surface.
+1. For a localized defect with a clear owning path, the main session reproduces, diagnoses, implements the smallest fix, and verifies it directly.
+2. Use a read-only `bug-diagnostician` when the cause is uncertain or alternative hypotheses need independent investigation. Validate its causal evidence before editing.
+3. Delegate to one `implementation-engineer` only when a bounded fix packet makes a handoff useful. Use `test-engineer` for a missing independent regression oracle, not as a mandatory stage.
+4. Use `code-reviewer` for material regression risk or requested independent review; add `security-specialist` for a security-sensitive surface.
 
 ## Gates
 
+- Run checks that establish the changed behavior and cover affected risks. Broaden or repeat them only for new edits, failures, unresolved concerns, or repository-required gates.
 - Do not edit before a reliable reproduction or sufficiently strong causal evidence exists.
 - Preserve unrelated behavior and user changes.
 - Run the regression test, affected-package checks, and relevant static checks.

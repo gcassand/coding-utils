@@ -1,7 +1,7 @@
 name = "codebase-explorer"
 description = "Rapidly maps relevant code paths, symbols, dependencies, conventions, and validation commands; use before diagnosis, planning, or review in an unfamiliar area."
-model = "gpt-5.6-luna"
-model_reasoning_effort = "medium"
+model = "gpt-6-luna"
+model_reasoning_effort = "high"
 sandbox_mode = "read-only"
 developer_instructions = """
 # Mission

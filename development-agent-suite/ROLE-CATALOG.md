@@ -23,9 +23,13 @@ Roles describe bounded responsibilities, not an autonomous organization chart. T
 
 | Profile | Codex | Claude Code | Intended work |
 | --- | --- | --- | --- |
-| Frontier | `gpt-5.6` | `claude-opus-5` | Ambiguous implementation, architecture, diagnosis, adversarial review |
-| Balanced | `gpt-5.6-terra` | `claude-sonnet-5` | Planning, testing, documentation, product synthesis, release review |
-| Fast | `gpt-5.6-luna` | `claude-haiku-4-5` | Bounded read-heavy repository mapping |
+| Frontier | `gpt-6-astra` | `claude-opus-5` | Ambiguous implementation, architecture, diagnosis, adversarial review |
+| Balanced | `gpt-6.1-sol` | `claude-sonnet-5` | Planning, testing, documentation, product synthesis, release review |
+| Fast | `gpt-6-luna` | `claude-haiku-4-5` | Bounded read-heavy repository mapping |
+
+OpenAI profiles checked on **2026-10-06** against the [official model guidance](https://learn.chatgpt.com/docs/models). Use GPT-6.1 Sol for routine coding in the main session; reserve the Frontier specialist profile for difficult architecture, diagnosis, and review. Saved specialist models are independent of the main session's model. Availability depends on account, client, and workspace controls; if unavailable, deliberately select an available model rather than silently falling back.
+
+Codex starting efforts are `low` for Astra, `medium` for Sol (an explicit suite baseline, not a claim about the client's default), and `high` for Luna. Escalate only when representative checks show a quality need. Efforts do not map directly between generations. These are documentation-informed starting points, not measured performance claims. `codex_effort` in the catalog controls Codex; the existing `effort` field retains Claude settings and model pins from August 2026.
 
 The Claude quality-first override is `claude-fable-5`; it is intentionally not a default because this suite uses balanced cost and latency profiles. Organizations may override models through their normal configuration, but they should rerun representative evaluations after doing so.
 

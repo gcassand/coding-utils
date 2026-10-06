@@ -1,6 +1,6 @@
 # Lifecycle workflows
 
-The paired source skills under `templates/codex/.agents/skills/` and `templates/claude/.claude/skills/` expose the workflows below. Install the selected adapter, then invoke them explicitly when you want the full orchestration; individual roles may also be called directly for bounded work. See [usage examples](USAGE-EXAMPLES.md).
+The paired source skills under `templates/codex/.agents/skills/` and `templates/claude/.claude/skills/` expose the workflows below. Install the selected adapter, then invoke them for their decision criteria and verification gates; Named roles are optional unless independent specialist work is requested; the main session can complete bounded tasks directly. Individual roles may also be called directly for bounded work. See [usage examples](USAGE-EXAMPLES.md).
 
 ## `discover-product`
 
@@ -12,15 +12,15 @@ Use after the desired outcome is approved but the repository has no meaningful c
 
 ## `plan-feature`
 
-Use after the desired outcome is stable but before implementation. `codebase-explorer` maps the existing system; `software-architect` defines contracts and risks; `delivery-planner` creates ordered task packets. Implementation waits until the coordinator or human records the chosen design and acceptance oracle.
+Use after the desired outcome is stable but before implementation. The main session can plan a bounded change directly. Use `codebase-explorer` for unfamiliar paths, `software-architect` for consequential contracts and risks, and `delivery-planner` for multiple ready packets. Implementation waits until the coordinator or human records the chosen design and acceptance oracle.
 
 ## `implement-feature`
 
-Use for an approved feature with stable contracts. Start with one `implementation-engineer`. Add a second writer or `test-engineer` only when write sets are disjoint, both tasks are ready, and each has an executable oracle. Integrate centrally and run combined tests.
+Use for an approved feature with stable contracts. Start in the main session or with one delegated `implementation-engineer`. Add a second writer or `test-engineer` only when write sets are disjoint, both tasks are ready, and each has an executable oracle. Integrate centrally and run combined tests.
 
 ## `fix-bug`
 
-Use for a reported defect. `bug-diagnostician` reproduces and localizes without editing. One `implementation-engineer` owns the minimal fix; `test-engineer` adds a regression oracle when needed. Run review or security checks according to risk. Do not run competing writers over the same fault.
+Use for a reported defect. The main session handles localized faults directly. Use `bug-diagnostician` when the cause is uncertain; delegate one `implementation-engineer` for a useful bounded handoff and `test-engineer` for a missing independent regression oracle. Run review or security checks according to risk. Do not run competing writers over the same fault.
 
 ## `review-change`
 
@@ -36,7 +36,7 @@ Use before deployment or release. `release-engineer` owns the checklist; `test-e
 
 ## Concurrency and stop rules
 
-- Default: coordinator plus one active specialist.
+- Default: one capable main session; add a specialist only when it contributes distinct, independently verifiable work.
 - Initial cap for a genuinely decomposable feature: coordinator plus at most three specialists.
 - Only independent read-heavy work should fan out freely within the configured cap.
 - Stop spawning when no ready queue remains.

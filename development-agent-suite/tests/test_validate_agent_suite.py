@@ -65,6 +65,25 @@ class AgentSuiteValidatorTests(unittest.TestCase):
         )
         self.assertTrue(any("stale or incorrect Claude model" in error for error in validate_suite(self.suite)))
 
+    def test_stale_codex_model_mapping_is_rejected(self) -> None:
+        self._replace(
+            "templates/codex/.codex/agents/codebase-explorer.toml",
+            'model = "gpt-6-luna"',
+            'model = "gpt-5.6-luna"',
+        )
+        self.assertTrue(any("stale or incorrect Codex model" in error for error in validate_suite(self.suite)))
+
+    def test_codex_effort_is_independent_of_claude_effort(self) -> None:
+        # Changing the Codex adapter must not alter the retained Claude effort pin.
+        self._replace(
+            "templates/codex/.codex/agents/software-architect.toml",
+            'model_reasoning_effort = "low"',
+            'model_reasoning_effort = "xhigh"',
+        )
+        errors = validate_suite(self.suite)
+        self.assertTrue(any("incorrect reasoning effort" in error for error in errors))
+        self.assertFalse(any("incorrect effort" in error for error in errors))
+
     def test_absent_workflow_counterpart_is_rejected(self) -> None:
         (self.suite / "templates/claude/.claude/skills/fix-bug/SKILL.md").unlink()
         errors = validate_suite(self.suite)

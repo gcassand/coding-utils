@@ -1,36 +1,120 @@
 {
   "name": "cross-platform-development-agent-suite",
-  "version": "0.2.0",
-  "documentation_baseline": "2026-08-24",
+  "version": "0.3.0",
+  "documentation_baseline": "2026-10-06",
   "profiles": {
     "frontier": {
-      "codex_model": "gpt-5.6",
+      "codex_model": "gpt-6-astra",
       "claude_model": "claude-opus-5"
     },
     "balanced": {
-      "codex_model": "gpt-5.6-terra",
+      "codex_model": "gpt-6.1-sol",
       "claude_model": "claude-sonnet-5"
     },
     "fast": {
-      "codex_model": "gpt-5.6-luna",
+      "codex_model": "gpt-6-luna",
       "claude_model": "claude-haiku-4-5"
     }
   },
   "agents": [
-    {"id": "product-owner", "profile": "balanced", "effort": "high", "access": "read-only"},
-    {"id": "ux-researcher", "profile": "balanced", "effort": "high", "access": "read-only"},
-    {"id": "product-designer", "profile": "frontier", "effort": "high", "access": "read-only"},
-    {"id": "software-architect", "profile": "frontier", "effort": "xhigh", "access": "read-only"},
-    {"id": "project-bootstrapper", "profile": "frontier", "effort": "xhigh", "access": "writer"},
-    {"id": "delivery-planner", "profile": "balanced", "effort": "high", "access": "read-only"},
-    {"id": "codebase-explorer", "profile": "fast", "effort": "medium", "access": "read-only"},
-    {"id": "bug-diagnostician", "profile": "frontier", "effort": "high", "access": "read-only"},
-    {"id": "implementation-engineer", "profile": "frontier", "effort": "high", "access": "writer"},
-    {"id": "test-engineer", "profile": "balanced", "effort": "high", "access": "writer"},
-    {"id": "code-reviewer", "profile": "frontier", "effort": "high", "access": "read-only"},
-    {"id": "security-specialist", "profile": "frontier", "effort": "xhigh", "access": "read-only"},
-    {"id": "documentation-engineer", "profile": "balanced", "effort": "medium", "access": "writer"},
-    {"id": "release-engineer", "profile": "balanced", "effort": "high", "access": "read-only"}
+    {
+      "id": "product-owner",
+      "profile": "balanced",
+      "effort": "high",
+      "access": "read-only",
+      "codex_effort": "medium"
+    },
+    {
+      "id": "ux-researcher",
+      "profile": "balanced",
+      "effort": "high",
+      "access": "read-only",
+      "codex_effort": "medium"
+    },
+    {
+      "id": "product-designer",
+      "profile": "frontier",
+      "effort": "high",
+      "access": "read-only",
+      "codex_effort": "low"
+    },
+    {
+      "id": "software-architect",
+      "profile": "frontier",
+      "effort": "xhigh",
+      "access": "read-only",
+      "codex_effort": "low"
+    },
+    {
+      "id": "project-bootstrapper",
+      "profile": "frontier",
+      "effort": "xhigh",
+      "access": "writer",
+      "codex_effort": "low"
+    },
+    {
+      "id": "delivery-planner",
+      "profile": "balanced",
+      "effort": "high",
+      "access": "read-only",
+      "codex_effort": "medium"
+    },
+    {
+      "id": "codebase-explorer",
+      "profile": "fast",
+      "effort": "medium",
+      "access": "read-only",
+      "codex_effort": "high"
+    },
+    {
+      "id": "bug-diagnostician",
+      "profile": "frontier",
+      "effort": "high",
+      "access": "read-only",
+      "codex_effort": "low"
+    },
+    {
+      "id": "implementation-engineer",
+      "profile": "frontier",
+      "effort": "high",
+      "access": "writer",
+      "codex_effort": "low"
+    },
+    {
+      "id": "test-engineer",
+      "profile": "balanced",
+      "effort": "high",
+      "access": "writer",
+      "codex_effort": "medium"
+    },
+    {
+      "id": "code-reviewer",
+      "profile": "frontier",
+      "effort": "high",
+      "access": "read-only",
+      "codex_effort": "low"
+    },
+    {
+      "id": "security-specialist",
+      "profile": "frontier",
+      "effort": "xhigh",
+      "access": "read-only",
+      "codex_effort": "low"
+    },
+    {
+      "id": "documentation-engineer",
+      "profile": "balanced",
+      "effort": "medium",
+      "access": "writer",
+      "codex_effort": "medium"
+    },
+    {
+      "id": "release-engineer",
+      "profile": "balanced",
+      "effort": "high",
+      "access": "read-only",
+      "codex_effort": "medium"
+    }
   ],
   "workflows": [
     "discover-product",

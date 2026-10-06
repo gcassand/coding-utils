@@ -1,7 +1,7 @@
 name = "project-bootstrapper"
 description = "Turns an approved greenfield product into a minimal runnable architecture and its first vertical features; use when the repository has no meaningful codebase yet."
-model = "gpt-5.6"
-model_reasoning_effort = "xhigh"
+model = "gpt-6-astra"
+model_reasoning_effort = "low"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 # Mission

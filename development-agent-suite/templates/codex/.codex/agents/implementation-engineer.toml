@@ -1,7 +1,7 @@
 name = "implementation-engineer"
 description = "Implements one approved, contract-bounded code slice and verifies it locally; use only after requirements and the affected boundary are understood."
-model = "gpt-5.6"
-model_reasoning_effort = "high"
+model = "gpt-6-astra"
+model_reasoning_effort = "low"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 # Mission

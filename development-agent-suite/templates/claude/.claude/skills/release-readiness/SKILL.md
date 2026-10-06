@@ -7,18 +7,19 @@ description: Assess whether a change is ready to release using test, migration, 
 
 Produce a go, conditional-go, or no-go recommendation. Do not deploy, tag, publish, merge, or approve the release.
 
+Scale inputs and reporting to the decision and risk. Named roles describe responsibilities; they are optional delegation choices unless the user requests an independent specialist. Continue authorized work through verification and correction; pause only for material missing decisions or permission boundaries.
+
 ## Required inputs
 
 Require release scope, artifact identity, target environments, acceptance and regression results, compatibility matrix, migration and rollback plans, observability, staged rollout, owners, support plan, and security disposition.
 
 ## Roles and order
 
-1. `release-engineer` owns the evidence matrix and readiness verdict.
-2. `test-engineer` evaluates missing or unreliable test evidence.
-3. `documentation-engineer` checks user, operator, migration, and support documentation; it remains read-only unless a separate documentation edit is authorized.
-4. `security-specialist` participates when security findings, sensitive changes, or risk acceptance require review.
+1. The main session can assess a release from a complete, bounded evidence set directly. Use `release-engineer` when rollout, migration, recovery, or compatibility evidence needs substantial synthesis.
+2. Use `test-engineer` for missing or unreliable test evidence, and `documentation-engineer` for uncertain user or operator documentation; both remain read-only unless an edit is authorized.
+3. Use `security-specialist` when security findings, sensitive changes, or risk acceptance require independent review.
 
-Independent evidence collection may run in parallel. The coordinator resolves contradictions and keeps the human release owner accountable.
+Independent evidence collection may run in parallel when useful. The coordinator resolves contradictions and keeps the human release owner accountable.
 
 ## Gates
 

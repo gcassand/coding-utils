@@ -7,17 +7,19 @@ description: Turn an uncertain product problem into a decision-ready, evidence-l
 
 Keep the main session as coordinator. Produce a reviewable product decision, not code or autonomous product approval.
 
+Scale inputs and reporting to the decision and risk. Named roles describe responsibilities; they are optional delegation choices unless the user requests an independent specialist. Continue authorized work through verification and correction; pause only for material missing decisions or permission boundaries.
+
 ## Required inputs
 
 Collect the problem statement, intended decision, known evidence, target audience, constraints, deadline, current experience, and accountable decision owner. Unknowns may remain, but must be labeled.
 
 ## Roles and order
 
-1. Ask `product-owner` to frame outcomes, scope, non-goals, and measurable acceptance.
-2. Ask `ux-researcher` to assess evidence and propose the smallest research needed. It must not invent findings.
-3. Ask `product-designer` to explore the critical journey and state model after the outcome is stable enough.
+1. The main session can frame a bounded problem from supplied evidence directly. Use `product-owner` when outcome, scope, or acceptance needs substantial synthesis.
+2. Use `ux-researcher` when evidence provenance or a research plan needs scrutiny; it must not invent findings.
+3. Use `product-designer` when the critical journey, states, or interaction tradeoffs need a separate specification.
 
-The three roles may run in parallel only for independent exploration from the same supplied evidence. The coordinator reconciles disagreements and asks the human to decide material product tradeoffs.
+Delegate independent evidence analysis only when it adds distinct information. The coordinator reconciles disagreements and asks the human to decide material product tradeoffs.
 
 ## Gates
 

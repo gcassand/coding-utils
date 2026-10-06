@@ -5,7 +5,9 @@ description: Start an approved software product when no usable codebase exists, 
 
 # Bootstrap project
 
-Keep the main session accountable for product and consequential architecture decisions. Use one `project-bootstrapper` as the founding write owner while architecture and implementation are still tightly coupled; this workflow is not permission for autonomous product invention or deployment.
+Keep the main session accountable for product and consequential architecture decisions. Use the main session or one delegated `project-bootstrapper` as the founding write owner while architecture and implementation are still tightly coupled; this workflow is not permission for autonomous product invention or deployment.
+
+Scale inputs and reporting to the decision and risk. Named roles describe responsibilities; they are optional delegation choices unless the user requests an independent specialist. Continue authorized work through verification and correction; pause only for material missing decisions or permission boundaries.
 
 ## Required inputs
 
@@ -14,7 +16,7 @@ Require an approved user-visible outcome, target users and critical journey, non
 ## Roles and order
 
 1. The coordinator confirms that the repository has no meaningful inherited runtime or acceptance harness and classifies choices as reversible defaults or consequential commitments.
-2. One `project-bootstrapper` owns the isolated repository or checkout, using a worktree once a base commit exists. It records the smallest viable architecture and alternatives, then builds and verifies one end-to-end walking skeleton before expanding the design.
+2. One founding write owner (the main session or `project-bootstrapper`) owns the isolated repository or checkout, using a worktree once a base commit exists. It records the smallest viable architecture and alternatives, then builds and verifies one end-to-end walking skeleton before expanding the design.
 3. The same bootstrapper implements approved early features sequentially as dependency-cohesive vertical slices while the foundation is still changing. Do not divide the initial scaffold by files or layers.
 4. After the first executable slice, use `test-engineer`, `code-reviewer`, or `security-specialist` only when they can produce independent evidence against explicit risk criteria. Keep one integration owner.
 5. Exit to `plan-feature` and `implement-feature` once the clean-start command, conventions, contracts, ownership boundaries, and acceptance harness are stable enough for another engineer to add a feature without reopening the foundation.

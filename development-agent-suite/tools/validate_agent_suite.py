@@ -87,10 +87,10 @@ def _check_unsafe_paths(errors: list[str], label: str, text: str) -> None:
 
 
 def _validate_catalog(errors: list[str], catalog: dict[str, Any]) -> None:
-    if catalog.get("version") != "0.2.0":
-        errors.append("catalog: expected suite version 0.2.0")
-    if catalog.get("documentation_baseline") != "2026-08-24":
-        errors.append("catalog: documentation baseline must be 2026-08-24")
+    if catalog.get("version") != "0.3.0":
+        errors.append("catalog: expected suite version 0.3.0")
+    if catalog.get("documentation_baseline") != "2026-10-06":
+        errors.append("catalog: documentation baseline must be 2026-10-06")
 
     profiles = catalog.get("profiles", {})
     if set(profiles) != {"frontier", "balanced", "fast"}:
@@ -251,7 +251,7 @@ def validate_suite(root: Path = SUITE_ROOT) -> list[str]:
             codex_description = codex.get("description")
             if codex.get("model") != profile.get("codex_model"):
                 errors.append(f"{codex_path.relative_to(root)}: stale or incorrect Codex model")
-            if codex.get("model_reasoning_effort") != entry.get("effort"):
+            if codex.get("model_reasoning_effort") != entry.get("codex_effort"):
                 errors.append(f"{codex_path.relative_to(root)}: incorrect reasoning effort")
             expected_sandbox = "workspace-write" if access == "writer" else "read-only"
             if codex.get("sandbox_mode") != expected_sandbox:

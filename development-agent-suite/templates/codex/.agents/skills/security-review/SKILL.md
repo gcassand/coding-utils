@@ -7,15 +7,17 @@ description: Perform an authorized defensive threat model and repository securit
 
 This workflow is defensive and repository-scoped. It does not grant authority to exploit, persist, access secrets, scan external targets, or change production.
 
+Scale inputs and reporting to the decision and risk. Named roles describe responsibilities; they are optional delegation choices unless the user requests an independent specialist. Continue authorized work through verification and correction; pause only for material missing decisions or permission boundaries.
+
 ## Required inputs
 
 Record the authorized target, base and diff if any, actors, assets, trust boundaries, deployment assumptions, security requirements, allowed tools, data sensitivity, and explicit exclusions.
 
 ## Roles and order
 
-1. Use `codebase-explorer` for a bounded attack-surface map when the area is unfamiliar.
-2. `security-specialist` builds the threat model, traces relevant inputs and sensitive operations, validates plausible findings safely, and ranks them.
-3. The coordinator separates vulnerabilities from defense-in-depth suggestions and assigns fixes only in a later authorized cycle.
+1. The main session can inspect a narrow, authorized surface directly. Use `codebase-explorer` for an unfamiliar attack surface only when needed.
+2. Use `security-specialist` for substantial threat modeling, uncertain exploitability, or requested independent security analysis. Trace relevant inputs and sensitive operations, validate plausible findings safely, and rank them.
+3. Separate vulnerabilities from defense-in-depth suggestions and assign fixes only within an authorized remediation scope.
 
 ## Gates
 

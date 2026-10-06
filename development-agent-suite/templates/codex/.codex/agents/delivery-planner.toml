@@ -1,7 +1,7 @@
 name = "delivery-planner"
 description = "Converts approved requirements and architecture into dependency-ordered, independently verifiable task packets; use immediately before implementation fan-out."
-model = "gpt-5.6-terra"
-model_reasoning_effort = "high"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 developer_instructions = """
 # Mission

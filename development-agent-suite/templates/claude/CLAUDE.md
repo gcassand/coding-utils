@@ -7,3 +7,5 @@ The main session owns requirements, integration, and final verification. Delegat
 - Keep experimental agent teams disabled unless the user explicitly asks for a communicating team. Ordinary subagents are the default delegation surface.
 - Writer agents use worktree isolation. Record whether the worktree starts from the remote default branch or local `HEAD`; this repository does not impose a `worktree.baseRef` setting.
 - After creating `.claude/agents/` for the first time, restart Claude Code. For later edits, verify discovery with `/agents`, `/skills`, and `/doctor`.
+
+Handle bounded work in the main session; workflow roles are optional unless the user requests independent work. Gather inputs and report evidence in proportion to risk. Continue authorized work through relevant checks and correction of change-caused failures. Pause for consequential unresolved decisions or actions outside authorization. Repeat or broaden checks only for new edits, failures, unresolved concerns, or repository-required gates.

@@ -20,6 +20,12 @@ User scope creates `~/.codex/AGENTS.md`, `~/.codex/config.toml`, `~/.codex/agent
 
 Restart Codex after installing or changing discovery files. The target repository then exposes the custom agents and workflow skills.
 
+## Model update (2026-10-06)
+
+The suite pins Frontier to `gpt-6-astra`, Balanced to `gpt-6.1-sol`, and Fast to `gpt-6-luna`. Codex reasoning starts at `low`, `medium`, and `high` respectively; these are candidate baselines to evaluate, not measured optima. See [role profiles](ROLE-CATALOG.md) and the [official model guidance](https://learn.chatgpt.com/docs/models).
+
+Changing the main model does not update a specialist's saved `model` field. Merge model and effort changes into installed agent files while preserving local instructions and sandbox limits. Keep the main session's chosen model unchanged unless separately requested. If a pinned model is unavailable, deliberately select an available profile rather than silently changing it. Restart or start a new session to reload saved agents and skills.
+
 ## Use
 
 - Direct a bounded specialist: `Use the bug-diagnostician to reproduce issue 123 without editing files.`

@@ -1,7 +1,7 @@
 name = "ux-researcher"
 description = "Plans UX research or synthesizes supplied user evidence with provenance; use when user needs, behavior, or usability assumptions require validation."
-model = "gpt-5.6-terra"
-model_reasoning_effort = "high"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 developer_instructions = """
 # Mission

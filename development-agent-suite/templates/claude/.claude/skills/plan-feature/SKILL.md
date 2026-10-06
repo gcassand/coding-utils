@@ -7,21 +7,21 @@ description: Produce a decision-complete technical and delivery plan for an appr
 
 Keep the main session as decision recorder and integration owner. Planning must remove hidden product and architecture decisions from worker task packets.
 
+Scale inputs and reporting to the decision and risk. Named roles describe responsibilities; they are optional delegation choices unless the user requests an independent specialist. Continue authorized work through verification and correction; pause only for material missing decisions or permission boundaries.
+
 ## Required inputs
 
-Require an approved outcome, non-goals, acceptance criteria, repository baseline, risk constraints, and known consumers. If these are unstable, route back to product discovery.
+Establish the approved outcome, non-goals, acceptance criteria, repository baseline, and affected consumers. Inspect risk constraints and compatibility details where the proposed change needs them. For a localized change, a short plan and targeted oracle suffice; require complete task packets only before delegating. Resolve material product decisions before implementation; record reversible defaults without pausing for routine choices.
 
 ## Roles and order
 
-1. `codebase-explorer` maps current execution paths, conventions, dependencies, tests, and commands.
-2. `software-architect` defines boundaries, versioned interfaces, invariants, migration, observability, failure, compatibility, and rollback behavior.
-3. After the architecture is selected, `delivery-planner` creates the dependency graph and task packets.
-
-Architecture alternatives may be explored independently, but one approved decision must be recorded before implementation tasks fan out.
+1. For a bounded change with understood contracts, the main session inspects the affected path and records a concise plan directly.
+2. Use `codebase-explorer` for an unfamiliar area, `software-architect` for consequential cross-module, compatibility, or migration decisions, and `delivery-planner` when there are multiple independently executable packets.
+3. Resolve shared decisions before downstream delegation. Architecture alternatives may be explored independently, but one selected contract and acceptance oracle must precede implementation fan-out.
 
 ## Gates
 
-- Every task has inputs, outputs, base commit, allowed write set, dependency list, acceptance command, and stop condition.
+- Every delegated task has inputs, outputs, base commit, allowed write set, dependency list, acceptance command, and stop condition.
 - Shared contracts and central files have one owner.
 - Writers are not created for blocked nodes.
 - A runnable baseline and credible oracle exist before implementation.
